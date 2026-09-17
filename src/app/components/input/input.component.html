@@ -1,0 +1,14 @@
+<div class="input-wrapper">
+  <label *ngIf="label">{{ label }}</label>
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value"
+    [class.error]="hasError"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+  />
+  <span class="error-text" *ngIf="hasError">{{ errorText }}</span>
+  <span class="warning-text" *ngIf="!hasError && warningText">{{ warningText }}</span>
+</div>

@@ -1,0 +1,23 @@
+.textarea-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  textarea {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+
+    &:disabled {
+      background: #f0f0f0;
+      cursor: not-allowed;
+    }
+  }
+
+  .char-count {
+    align-self: flex-end;
+    font-size: 0.75rem;
+    color: #888;
+  }
+}

@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-input 
+        formControlName="name"
+        label="Name"
+        placeholder="My Game">
+    </app-input>
+
+    <app-textarea
+        formControlName="description"
+        label="Description (Tell us about your game! What is it about? how is it being done? and if possible: how can we acess it?)" 
+        [rows]="6"
+        [maxLength]="500"
+        placeholder="My wholesome game about ducks!
+
+Me and two friends are developing it since 2024 using Godot and Blender.
+
+You can find it here: link
+        ">
+    </app-textarea>
+
+    <app-input
+        formControlName="email"
+        label="E-mail (We'll use that e-mail to notify you when your game registry is ready)"
+        placeholder="my-game-email@mail.com"
+        warningText="This e-mail MAY be accessible to players; please use a public e-mail used by your gaming organization."
+        >
+    </app-input>
+
+    <app-button
+        label="Send"
+        width="10%"
+        type="submit"
+        float="right"
+    ></app-button>
+</form>

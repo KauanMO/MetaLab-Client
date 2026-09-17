@@ -1,0 +1,28 @@
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: .3rem;
+  padding: .3rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background-color: #dbdbdb;
+  
+  &:hover {
+    background-color: #cccccc;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.secondary {
+    background: transparent;
+  }
+}

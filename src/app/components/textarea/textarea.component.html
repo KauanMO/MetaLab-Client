@@ -1,0 +1,13 @@
+<div class="textarea-wrapper">
+  <label *ngIf="label">{{ label }}</label>
+  <textarea
+    [rows]="rows"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [maxLength]="maxLength"
+    [value]="value"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+  ></textarea>
+  <span class="char-count" *ngIf="maxLength">{{ value.length }}/{{ maxLength }}</span>
+</div>

@@ -1,0 +1,30 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    &:disabled {
+      background: #f0f0f0;
+      cursor: not-allowed;
+    }
+
+    &.error {
+      border-color: red;
+    }
+  }
+
+  .error-text {
+    color: red;
+    font-size: .8rem;
+  }
+
+  .warning-text {
+    color: #b45309;
+    font-size: .8rem;
+  }
+}
