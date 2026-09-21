@@ -6,8 +6,10 @@
     [disabled]="disabled"
     [maxLength]="maxLength"
     [value]="value"
+    [class.error]="hasError"
     (input)="handleInput($event)"
     (blur)="onTouched()"
   ></textarea>
+  <span class="error-text" *ngIf="hasError">{{ errorText }}</span>
   <span class="char-count" *ngIf="maxLength">{{ value.length }}/{{ maxLength }}</span>
 </div>

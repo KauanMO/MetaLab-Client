@@ -1,20 +1,13 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, Optional, Self } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-textarea',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './textarea.component.html',
   styleUrl: './textarea.component.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TextareaComponent),
-      multi: true
-    }
-  ]
 })
 export class TextareaComponent implements ControlValueAccessor {
   @Input() label = '';
@@ -27,6 +20,12 @@ export class TextareaComponent implements ControlValueAccessor {
 
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};
+
+  constructor(@Optional() @Self() public ngControl: NgControl) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   handleInput(event: Event) {
     const target = event.target as HTMLTextAreaElement;
@@ -48,5 +47,24 @@ export class TextareaComponent implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  get control() {
+    return this.ngControl?.control;
+  }
+
+  get hasError(): boolean {
+    return !!this.control && this.control.invalid && (this.control.touched || this.control.dirty);
+  }
+
+  get errorText(): string {
+    if (!this.control?.errors) return '';
+
+    if (this.control.errors['required']) return 'This field is required';
+    if (this.control.errors['minlength']) {
+      return `Minimum ${this.control.errors['minlength'].requiredLength} characters`;
+    }
+
+    return 'Invalid value';
   }
 }

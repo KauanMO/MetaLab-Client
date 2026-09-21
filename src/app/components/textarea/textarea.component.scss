@@ -13,6 +13,15 @@
       background: #f0f0f0;
       cursor: not-allowed;
     }
+
+    &.error {
+      border-color: red;
+    }
+  }
+f
+  .error-text {
+    color: red;
+    font-size: .8rem;
   }
 
   .char-count {
