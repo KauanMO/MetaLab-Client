@@ -13,6 +13,7 @@ export class ButtonComponent {
   @Input() width: string = 'auto';
   @Input() variant: 'primary' | 'secondary' = 'primary';
   @Input() disabled = false;
+  @Input() loading = false;
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() float: 'right' | 'left' = 'left';
 }

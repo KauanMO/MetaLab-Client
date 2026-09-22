@@ -1,10 +1,12 @@
 <button
   [type]="type"
-  [disabled]="disabled"
+  [disabled]="disabled || loading"
   [class.secondary]="variant === 'secondary'"
+  [class.loading]="loading"
   [style.width]="width"
   [style.float]="float"
   class="app-button"
 >
-  {{ label }}
+  <span class="spinner" *ngIf="loading"></span>
+  <span [class.hidden-label]="loading">{{ label }}</span>
 </button>

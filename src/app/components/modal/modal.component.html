@@ -1,0 +1,21 @@
+@if (body(); as component) {
+  <div class="backdrop" (click)="modal.close()">
+    <div
+      class="dialog"
+      role="dialog"
+      aria-modal="true"
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        type="button"
+        class="close"
+        aria-label="Fechar"
+        (click)="modal.close()"
+      >
+        &times;
+      </button>
+
+      <ng-container *ngComponentOutlet="component" />
+    </div>
+  </div>
+}

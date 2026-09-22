@@ -1,0 +1,43 @@
+$modal-bg: #fff;
+$modal-fg: #1a1a1a;
+$backdrop-bg: rgb(0 0 0 / 0.55);
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: $backdrop-bg;
+}
+
+.dialog {
+    position: relative;
+    width: 100%;
+    max-width: 30rem;
+    max-height: calc(100dvh - 2rem);
+    overflow: auto;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background: $modal-bg;
+    color: $modal-fg;
+    box-shadow: 0 20px 50px rgb(0 0 0 / 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+}

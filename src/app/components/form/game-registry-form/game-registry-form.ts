@@ -5,6 +5,7 @@ import { InputComponent } from '../../input/input.component';
 import { TextareaComponent } from '../../textarea/textarea.component';
 import { GameService } from '../../../services/game.service';
 import { ButtonComponent } from '../../button/button.component';
+import { ModalService } from '../../modal/modal.service';
 
 @Component({
   selector: 'app-game-registry-form',
@@ -15,28 +16,36 @@ import { ButtonComponent } from '../../button/button.component';
 })
 export class GameRegistryFormComponent {
   form: FormGroup;
+  isLoading = false;
 
-  constructor(private fb: FormBuilder, private gameService: GameService) {
+  constructor(private fb: FormBuilder, private gameService: GameService, private modalService: ModalService) {
     this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      description: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
   onSubmit() {
-    console.log(this.form.value);
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
 
+    this.isLoading = true;
+
     this.gameService.registerGame(
       this.form.value['email'],
       this.form.value['name'],
       this.form.value['description'],
-    ).subscribe(game => {
-      game
-    })
+    ).subscribe({
+      next: (game) => {
+        this.isLoading = false;
+        this.modalService.open('gameRegistryRequestCreated');
+      },
+      error: () => {
+        this.isLoading = false;
+      }
+    });
   }
 }
