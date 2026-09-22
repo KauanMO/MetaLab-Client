@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { GameRegistryFormComponent } from './components/form/game-registry-form/game-registry-form';
 import { ModalComponent } from './components/modal/modal.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GameRegistryFormComponent, ModalComponent],
+  imports: [ModalComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,0 +1,35 @@
+<div class="feedbacks-page">
+  @if (loading) {
+    <span class="status-message">Loading feedbacks...</span>
+  }
+
+  @if (error) {
+    <span class="status-message">{{ error }}</span>
+  }
+
+  @if (!loading && !error) {
+    @if (game) {
+      <div class="game-header">
+        <span class="game-name">{{ game.name }}</span>
+        <span class="game-code">Code: {{ game.code }}</span>
+      </div>
+    }
+
+    @if (feedbacks.length > 0) {
+      <div class="feedback-list">
+        @for (feedback of feedbacks; track feedback.id) {
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <span class="feedback-type">{{ feedbackTypeLabel(feedback.type) }}</span>
+              <span class="feedback-date">{{ feedback.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+
+            <span class="feedback-message">{{ feedback.message }}</span>
+          </div>
+        }
+      </div>
+    } @else {
+      <span class="status-message">No feedback found for this game.</span>
+    }
+  }
+</div>

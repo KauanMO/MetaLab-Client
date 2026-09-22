@@ -1,0 +1,57 @@
+.feedbacks-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+
+  .status-message {
+    display: block;
+    color: #888;
+  }
+
+  .game-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    .game-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .game-code {
+      color: #888;
+      font-size: .85rem;
+    }
+  }
+
+  .feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .feedback-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: .4rem;
+    padding: .75rem 1rem;
+  }
+
+  .feedback-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8rem;
+    color: #888;
+    margin-bottom: .4rem;
+
+    .feedback-type {
+      font-weight: 600;
+      color: #555;
+    }
+  }
+
+  .feedback-message {
+    white-space: pre-wrap;
+  }
+}
